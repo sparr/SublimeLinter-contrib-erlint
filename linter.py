@@ -16,7 +16,7 @@ from SublimeLinter.lint import Linter, util
 class Erlint(Linter):
     """Provides an interface to erlint."""
 
-    syntax = 'Erlang'
+    syntax = 'erlang'
     cmd = 'erlint'
     executable = None
     version_args = '--version'
@@ -28,12 +28,12 @@ class Erlint(Linter):
     regex = (
         r'^.+?:(?P<line>\d+): '
         r'(?:(?P<error>error)|(?P<warning>warning)): '
-        r'\{(?P<message>.+)\}'
+        r'(?P<message>.+)'
     )
     multiline = False
 
     line_col_base = (1, 1)
-    tempfile_suffix = None
+    tempfile_suffix = '.erl'
     error_stream = util.STREAM_BOTH
     selectors = {}
     word_re = None
